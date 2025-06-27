@@ -12,10 +12,14 @@ cmake ${CMAKE_ARGS} -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-  -DDYLD_LIBRARY_PATH=$PREFIX/lib:$DYLD_LIBRARY_PATH
   ..
 
 cmake --build . --config Release --target install
+
+# To fix tests on Mac
+if [[ ${target_platform} == osx-* ]]; then
+  export DYLD_LIBRARY_PATH=$PREFIX/lib/libaws-c-io${SHLIB_EXT}
+fi
 
 ctest --output-on-failure -j${CPU_COUNT}
 
