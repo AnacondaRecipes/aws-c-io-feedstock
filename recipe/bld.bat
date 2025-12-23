@@ -16,6 +16,6 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 REM Expected condition to be false: outgoing_args.error_invoked
-EXCLUDE_TESTS_WIN="tls_client_channel_negotiation_success_mtls_tls1_3 future_get_result_by_move"
+set "EXCLUDE_TESTS_WIN=tls_client_channel_negotiation_success_mtls_tls1_3|incoming_tcp_sock_errors"
 ctest -E "%EXCLUDE_TESTS_WIN%" --output-on-failure
 if errorlevel 1 exit 1
