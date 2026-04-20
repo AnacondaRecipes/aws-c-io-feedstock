@@ -1,5 +1,5 @@
 {% set name = "aws-c-io" %}
-{% set version = "0.23.3" %}
+{% set version = "0.26.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/awslabs/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: cdcb31b694fc28ba96237ee33a742679daf2dcabfd41464f8a68fbd913907085
+  sha256: 521fd0848fca661130bbb7278a414d7a38bdcb9bc8ffa89f6660d84e5838a303
 
 build:
   number: 0
@@ -23,7 +23,7 @@ requirements:
   host:
     - aws-c-common 0.12.6
     - aws-c-cal 0.9.13
-    - s2n 1.6.2  # [linux]
+    - s2n {{ s2n }}  # [linux]
 
 test:
   commands:
