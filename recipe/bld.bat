@@ -16,6 +16,7 @@ cmake --build . --config Release --target install
 if errorlevel 1 exit 1
 
 REM Expected condition to be false: outgoing_args.error_invoked
-set "EXCLUDE_TESTS_WIN=tls_client_channel_negotiation_success_mtls_tls1_3|incoming_tcp_sock_errors"
+REM Bundled test certs (tests/resources/*.crt) expired 2026-08-06; same tests already excluded on linux/osx.
+set "EXCLUDE_TESTS_WIN=tls_client_channel_negotiation_success_mtls_tls1_3|incoming_tcp_sock_errors|tls_channel_echo_and_backpressure_test|tls_channel_shutdown_with_cache_test|tls_channel_shutdown_with_cache_window_update_after_shutdown_test|tls_server_multiple_connections|tls_channel_statistics_test|tls_certificate_chain_test"
 ctest -E "%EXCLUDE_TESTS_WIN%" --output-on-failure
 if errorlevel 1 exit 1
