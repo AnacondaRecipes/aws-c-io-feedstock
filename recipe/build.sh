@@ -42,7 +42,15 @@ shared_library_find_function_success"
   ctest -E "${EXCLUDE_TEST_APPLE}" --output-on-failure -j${CPU_COUNT}
 else
   # Expected success at aws_socket_init(&listener, allocator, options); got return value -1 with last error 1053
-  EXCLUDE_TESTS_LINUX="test_socket_with_bind_to_interface"
+  # Bundled test certs (tests/resources/*.crt) expired 2026-08-06; same tests already excluded on osx above.
+  EXCLUDE_TESTS_LINUX="\
+test_socket_with_bind_to_interface|\
+tls_channel_echo_and_backpressure_test|\
+tls_channel_shutdown_with_cache_test|\
+tls_channel_shutdown_with_cache_window_update_after_shutdown_test|\
+tls_server_multiple_connections|\
+tls_channel_statistics_test|\
+tls_certificate_chain_test"
   ctest -E "${EXCLUDE_TESTS_LINUX}" --output-on-failure -j${CPU_COUNT}
 fi
 popd
