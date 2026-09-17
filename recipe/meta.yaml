@@ -23,7 +23,7 @@ requirements:
   host:
     - aws-c-common 0.14.5
     - aws-c-cal 0.9.15
-    - s2n {{ s2n }}
+    - s2n {{ s2n }}  # [unix]
 
 test:
   commands:
