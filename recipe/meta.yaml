@@ -1,5 +1,5 @@
 {% set name = "aws-c-io" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/awslabs/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 5fecb19c2c0a165687cdd94723943a02ab23a0270deade5661fd935a3cd55e78
+  sha256: a437ec3b5929582d79f43904e4939626db19d6fd30c44cb16841bc70c7d6548b
 
 build:
   number: 0
@@ -21,7 +21,7 @@ requirements:
     - cmake >=3.9
     - ninja-base
   host:
-    - aws-c-common 1.0.1
+    - aws-c-common 1.0.3
     - aws-c-cal 1.0.0
     - s2n {{ s2n }}  # [unix]
 
